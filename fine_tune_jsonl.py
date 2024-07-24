@@ -1,10 +1,12 @@
 import csv
 import json
+import boto3
 
-S3_BUCKET_NAME='BUCKET NAME HERE'
-s3_prefix = "s3://{S3_BUCKET_NAME}/images/"
+S3_BUCKET_NAME='Your bucket name here'
+s3_prefix = f"s3://{S3_BUCKET_NAME}/images/"
 train_sample_size=1000
 val_sample_size=300
+s3 = boto3.client('s3')
 
 with open('./miccai2023_nih-cxr-lt_labels_train.csv') as input, open("./train.jsonl", "w") as train:
     reader = csv.reader(input)
@@ -55,5 +57,8 @@ with open('./miccai2023_nih-cxr-lt_labels_val.csv') as input, open("./validation
             i+=1
         else:
             break
+
+s3.upload_file("./train.jsonl", S3_BUCKET_NAME, 'train.jsonl')
+s3.upload_file("./validation.jsonl", S3_BUCKET_NAME, 'validation.jsonl')
 
 

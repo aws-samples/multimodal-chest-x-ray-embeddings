@@ -4,7 +4,7 @@ import tarfile
 import os
 import subprocess
 
-S3_BUCKET='YOUR BUCKET NAME HERE'
+S3_BUCKET='Your Bucket Name Here'
 S3_URI=f's3://{S3_BUCKET}'
 
 # URL for the zip file
@@ -12,7 +12,7 @@ link = 'https://nihcc.box.com/shared/static/vfk49d74nhbxq3nqjg0900w5nvkorp5c.gz'
 
 fn = 'images_001.tar.gz'
 print('downloading'+fn+'...')
-# urllib.request.urlretrieve(link, fn)  # download the zip file
+urllib.request.urlretrieve(link, fn)  # download the zip file
 
 path = "images"
 # Check whether the specified path exists or not

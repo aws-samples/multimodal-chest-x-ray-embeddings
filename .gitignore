@@ -4,3 +4,8 @@ images/*
 *.tar.gz
 *.csv
 .DS_Store
+
+*/.terraform.lock.hcl
+*/.terraform/*
+*/.zip
+*/terraform.tfstate
