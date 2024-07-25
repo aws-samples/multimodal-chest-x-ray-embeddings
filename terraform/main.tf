@@ -103,3 +103,86 @@ resource "aws_iam_role_policy" "sagemaker_exec_role_additional_policy" {
     ]
   })
 }
+
+resource "aws_opensearchserverless_security_policy" "os_serverless_security_policy" {
+  name = "os-serverless-security-policy"
+  type = "encryption"
+  policy = jsonencode({
+    "Rules" = [
+      {
+        "Resource" = [
+          "collection/chest-xray-image-embeddings"
+        ],
+        "ResourceType" = "collection"
+      }
+    ],
+    "AWSOwnedKey" = true
+  })
+}
+
+resource "aws_opensearchserverless_collection" "os_serverless_collection" {
+  name = "chest-xray-image-embeddings"
+  type = "VECTORSEARCH"
+
+  depends_on = [aws_opensearchserverless_security_policy.os_serverless_security_policy]
+}
+
+resource "aws_opensearchserverless_access_policy" "os_serverless_data_access" {
+  name        = "os-serverless-data-access"
+  type        = "data"
+  description = "read and write permissions"
+  policy = jsonencode([
+    {
+      Rules = [
+        {
+          ResourceType = "index",
+          Resource = [
+            "index/chest-xray-image-embeddings/*"
+          ],
+          Permission = [
+            "aoss:*"
+          ]
+        },
+        {
+          ResourceType = "collection",
+          Resource = [
+            "collection/chest-xray-image-embeddings"
+          ],
+          Permission = [
+            "aoss:*"
+          ]
+        }
+      ],
+      Principal = [
+        data.aws_caller_identity.current.arn,
+        aws_iam_role.sagemaker_exec_role.arn
+      ]
+    }
+  ])
+}
+
+resource "aws_opensearchserverless_security_policy" "network_access_policy" {
+  name        = "network-access-policy"
+  type        = "network"
+  description = "Public access"
+  policy = jsonencode([
+    {
+      Description = "Public access to collection and Dashboards endpoint for example collection",
+      Rules = [
+        {
+          ResourceType = "collection",
+          Resource = [
+            "collection/chest-xray-image-embeddings"
+          ]
+        },
+        {
+          ResourceType = "dashboard"
+          Resource = [
+            "collection/chest-xray-image-embeddings"
+          ]
+        }
+      ],
+      AllowFromPublic = true
+    }
+  ])
+}
