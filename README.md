@@ -89,7 +89,8 @@ Each JSON line is a sample containing an image-ref, the S3 URI for an image, and
 ### Create Traning and Validation JSONL Files
 
 In your Jupyter Notebook 
-1. Download the [miccai2023_nih-cxr-lt_labels_train.csv](https://nihcc.app.box.com/v/ChestXray-NIHCC/file/1292081161269) and [miccai2023_nih-cxr-lt_labels_val.csv](https://nihcc.app.box.com/v/ChestXray-NIHCC/file/1292096337058) files and upload them to your Jupyter Notebook.
+1. Download the [miccai2023_nih-cxr-lt_labels_train.csv](https://nihcc.app.box.com/v/ChestXray-NIHCC/file/1292081161269), [miccai2023_nih-cxr-lt_labels_test.csv
+](https://nihcc.app.box.com/v/ChestXray-NIHCC/file/1292084530974) and [miccai2023_nih-cxr-lt_labels_val.csv](https://nihcc.app.box.com/v/ChestXray-NIHCC/file/1292096337058) files and upload them to your Jupyter Notebook.
 2. Locate the `fine_tune_jsonl.py` file. Replace the place holder `S3_BUCKET` variable value with the bucket name created by Terraform, the value should be `titan-multimodal-fine-tune-bucket-[ACCOUNT_ID]`.  `fine_tune_jsonl.py` file. 
 3. In your Jupyter Notebook instance terminal, run the python script with the following command:
 ```
@@ -112,4 +113,11 @@ In AWS console Bedrock service. Choose Custom models under Foundation models. Fo
 - For Service access, choose Use an existing service role. Select bedrock-finetune-service-role.
 - Choose Create fine-tune job.
 
+## Ingest Multimodal embeddings into OpenSearch Serverless
+
+Terraform deployment has created an OpenSearch Serverless collection `chest-xray-image-embeddings`
+
+Now we can use a Jupyter notebook to create an index for this collection and ingest multimodal embedding data to the index.
+
+Follow the steps in `ingest_and_query.ipynb` to create an index, ingest it with multimodal embeddings for the chest xray images and query the result!
 

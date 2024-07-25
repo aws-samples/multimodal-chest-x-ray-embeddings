@@ -60,5 +60,3 @@ with open('./miccai2023_nih-cxr-lt_labels_val.csv') as input, open("./validation
 
 s3.upload_file("./train.jsonl", S3_BUCKET, 'train.jsonl')
 s3.upload_file("./validation.jsonl", S3_BUCKET, 'validation.jsonl')
-
-
