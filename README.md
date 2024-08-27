@@ -6,6 +6,7 @@ Once deployed, users can search the NIH Chest X-ray dataset using a variety of q
 - Image-only queries
 - Text-only queries
 - Combination image and text queries
+
 The multimodal search approach allows users to leverage both visual and textual information to find the most relevant chest X-ray images for their needs.
 
 The deployed infrastructure includes all the necessary components to run the search, including:
