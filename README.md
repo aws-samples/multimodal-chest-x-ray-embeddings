@@ -1,5 +1,23 @@
 # Finetune Amazon Titan Multimodal Embeddings G1 model with Medical Chest X-Ray Image to Perform Image Based Queries
 
+This repository implements a patient chest X-ray multimodal search powered by the Amazon Titan Multimodal G1 model. It contains Terraform modules to deploy the required infrastructure to enable this functionality.
+
+Once deployed, users can search the NIH Chest X-ray dataset using a variety of query types, including:
+- Image-only queries
+- Text-only queries
+- Combination image and text queries
+The multimodal search approach allows users to leverage both visual and textual information to find the most relevant chest X-ray images for their needs.
+
+The deployed infrastructure includes all the necessary components to run the search, including:
+
+- S3 Bucket for the chest X-ray images and metadata
+- OpenSearch Serverless collection to store multimodal vector embeddings
+- SageMaker Notebook Instance to run the Jupyter Notebook for indexing and inference
+
+![architecture_diagram](./assets/xray_embedding.png)
+
+This solution provides a powerful and flexible way to explore and analyze chest X-ray data using advanced multimodal search capabilities.
+
 ## DataSet
 
 The dataset used in this blog is located [here](https://www.nih.gov/news-events/news-releases/nih-clinical-center-provides-one-largest-publicly-available-chest-x-ray-datasets-scientific-community) 
@@ -14,7 +32,7 @@ The dataset used in this blog is located [here](https://www.nih.gov/news-events/
 
 ## Deploy Terraform
 
-This will create an S3 bucket, IAM role and, Jupyter Notebook and OpenSearch Serverless collection.
+This will create an S3 bucket, IAM roles, a Jupyter Notebook instance and an OpenSearch Serverless collection.
 
 ### Clone the Code Repo
 - Clone the repo and navigate to the sagemaker-domain-vpconly-canvas-with-terraform folder: 
