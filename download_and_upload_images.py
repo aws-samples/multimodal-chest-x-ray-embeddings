@@ -7,7 +7,8 @@ import subprocess
 S3_BUCKET='Your Bucket Name Here'
 S3_URI=f's3://{S3_BUCKET}'
 
-# URL for the zip file
+# URL for the zip file. For demonstration purpose, only partial images are used for this work. For full dataset, you can refer to https://nihcc.app.box.com/v/ChestXray-NIHCC/file/371647823217 for details.
+
 link = 'https://nihcc.box.com/shared/static/vfk49d74nhbxq3nqjg0900w5nvkorp5c.gz'
 
 fn = 'images_001.tar.gz'

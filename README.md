@@ -110,7 +110,7 @@ Each JSON line is a sample containing an image-ref, the S3 URI for an image, and
 In your Jupyter Notebook 
 1. Download the [miccai2023_nih-cxr-lt_labels_train.csv](https://nihcc.app.box.com/v/ChestXray-NIHCC/file/1292081161269), [miccai2023_nih-cxr-lt_labels_test.csv
 ](https://nihcc.app.box.com/v/ChestXray-NIHCC/file/1292084530974) and [miccai2023_nih-cxr-lt_labels_val.csv](https://nihcc.app.box.com/v/ChestXray-NIHCC/file/1292096337058) files and upload them to your Jupyter Notebook.
-2. Locate the `fine_tune_jsonl.py` file. Replace the place holder `S3_BUCKET` variable value with the bucket name created by Terraform, the value should be `titan-multimodal-fine-tune-bucket-[ACCOUNT_ID]`.  `fine_tune_jsonl.py` file. 
+2. Locate the `fine_tune_jsonl.py` file. Replace the place holder `S3_BUCKET` variable value with the bucket name created by Terraform, the value should be `titan-multimodal-fine-tune-bucket-[ACCOUNT_ID]`. 
 3. In your Jupyter Notebook instance terminal, run the python script with the following command:
 ```
 python3 fine_tune_jsonl.py
@@ -124,7 +124,7 @@ In AWS console Bedrock service. Choose Custom models under Foundation models. Fo
 - Choose Customize model, and choose Create fine-tuning job. 
 - In Model details, for source model, choose Titan Multimodal Embeddings G1 model from Amazon.
 - Give your model a name. You can use any name that's meaningful such as Titan-multimodal-fine-tune.
-- Under Job Configuration, enter a job name, again, you can use any name that's meaningful such as Titan-multimodal-fine-tune-job.
+- Under Job Configuration, enter a job name. You can use any name that's meaningful such as Titan-multimodal-fine-tune-job.
 - Under Input data, for training dataset location, enter `s3://titan-multimodal-fine-tune-bucket-[ACCOUNT_ID]/train.jsonl`. Be sure to replace the ACCOUNT_ID place holder with your actual account ID value.
 - Under Input data, for validation dataset location, enter `s3://titan-multimodal-fine-tune-bucket-[ACCOUNT_ID]/validation.jsonl`. Be sure to replace the ACCOUNT_ID place holder with your actual account ID value.
 - Under Hyperparameters. For Epochs, choose Custom, and enter 5. For Batch size, enter 256. For Learning Rate, enter 0.01.
