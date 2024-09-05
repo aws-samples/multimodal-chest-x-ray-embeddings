@@ -140,3 +140,23 @@ Now we can use a Jupyter notebook to create an index for this collection and ing
 
 Follow the steps in `ingest_and_query.ipynb` to create an index, ingest it with multimodal embeddings for the chest xray images and query the result!
 
+## Contributing
+
+See the [CONTRIBUTING](./CONTRIBUTING.md) for more information.
+
+## License
+
+This library is licensed under the MIT-0 License.
+See the [LICENSE](./LICENSE) for more information.
+
+## Security
+
+See the
+[Security Issue Notifications](./CONTRIBUTING.md#security-issue-notifications)
+for more information.
+
+## Support
+
+Contributions, issues, and feature requests are welcome.
+Leave us a ⭐️ if you like this project.
+
