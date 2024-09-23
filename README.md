@@ -83,7 +83,7 @@ In AWS console SageMaker service, choose Notebooks under Applications and IDEs. 
 - Choose new, then select terminal. This will launch a new terminal.
 - In your Jupyter Notebook instance terminal. Clone the repo: 
 ```
-git clone [PLACEHOLDER FOR GITHUB REPO URL]
+git clone https://github.com/aws-samples/multimodal-chest-x-ray-embeddings.git
 ```
 - Go to the files tab in your Jupyter notebook main page. Locate the "download_and_upload_images.py" file. Replace the place holder `S3_BUCKET` variable value with the bucket name created by Terraform, the value should be `titan-multimodal-fine-tune-bucket-[ACCOUNT_ID]`. Save the file.
 - In your Jupyter Notebook instance terminal, run the python script with the following command:
