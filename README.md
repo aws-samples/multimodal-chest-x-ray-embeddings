@@ -38,7 +38,7 @@ This will create an S3 bucket, IAM roles, a Jupyter Notebook instance and an Ope
 ### Clone the Code Repo
 - Clone the repo and navigate to the sagemaker-domain-vpconly-canvas-with-terraform folder: 
 ```
-git clone [PLACEHOLDER FOR GITHUB REPO URL]
+git clone https://github.com/aws-samples/multimodal-chest-x-ray-embeddings.git
 
 cd terraform
 ```
@@ -139,6 +139,14 @@ Terraform deployment has created an OpenSearch Serverless collection `chest-xray
 Now we can use a Jupyter notebook to create an index for this collection and ingest multimodal embedding data to the index.
 
 Follow the steps in `ingest_and_query.ipynb` to create an index, ingest it with multimodal embeddings for the chest xray images and query the result!
+
+## Cleaning up
+
+Run the following command to clean up your resources
+
+```
+terraform destroy
+```
 
 ## Contributing
 
